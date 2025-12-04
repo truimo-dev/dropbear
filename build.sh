@@ -30,14 +30,14 @@ export STRIP="$TOOLCHAIN/bin/aarch64-linux-android-strip"
 
 echo "Compiler: $CC"
 
-# ====== Dropbear 配置 (Android 必须禁用部分特性) ======
+export CFLAGS="-DDROPBEAR_SVR_PASSWORD_AUTH=0 -DDROPBEAR_CLIENT_PASSWORD_AUTH=0"
+
 ./configure --host=aarch64-linux-android \
             --disable-zlib \
             --enable-static \
             --disable-lastlog \
             --disable-utmp \
-            --disable-wtmp \
-            --disable-loginfunc
+            --disable-wtmp
 
 # ====== 编译 ======
 echo "Building Dropbear..."
