@@ -24,9 +24,10 @@ cd dropbear-${DROPBEAR_VERSION}
 export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
 export CC="$TOOLCHAIN/bin/aarch64-linux-android${API}-clang"
 export CXX="$TOOLCHAIN/bin/aarch64-linux-android${API}-clang++"
-export AR="$TOOLCHAIN/bin/aarch64-linux-android-ar"
-export LD="$TOOLCHAIN/bin/aarch64-linux-android-ld"
-export STRIP="$TOOLCHAIN/bin/aarch64-linux-android-strip"
+export AR="$TOOLCHAIN/bin/llvm-ar"
+export RANLIB="$TOOLCHAIN/bin/llvm-ranlib"
+export LD="$TOOLCHAIN/bin/ld.lld"
+export STRIP="$TOOLCHAIN/bin/llvm-strip"
 
 echo "Compiler: $CC"
 
