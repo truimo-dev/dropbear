@@ -1,0 +1,27 @@
+name: Build Dropbear
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Install Build Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y wget build-essential autoconf automake libtool bison flex
+
+    - name: Run Build Script
+      run: bash ./build.sh
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: dropbear-android13-arm64
+        path: output
